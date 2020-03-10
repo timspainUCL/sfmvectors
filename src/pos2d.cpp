@@ -36,3 +36,9 @@ dir2d pos2d::direction(pos2d &a, pos2d &b) {
 	}
 	return dir2d(dx, dy);
 }
+
+pos2d pos2d::displace(dir2d &b) {
+	double nx = fmod(x() + b.x(), x_wrap);
+	double ny = fmod(y() + b.y(), y_wrap);
+	return pos2d(nx, ny);
+}

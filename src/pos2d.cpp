@@ -15,7 +15,16 @@
 
 // Move in a given direction from this position
 pos2d pos2d::operator+(dir2d &b){
-	return pos2d(fmod(x() + b.x(), x_wrap), fmod(y() + b.y(), y_wrap));
+	return this->displace(b);
+}
+
+dir2d pos2d::operator-(pos2d &b) {
+	return pos2d::direction(b, *this);
+}
+
+double pos2d::distance(pos2d &b) {
+	dir2d d = this->direction(b);
+	return sqrt(d.x() * d.x() + d.y() * d.y());
 }
 
 // direction vector a - b, where 'this' is a

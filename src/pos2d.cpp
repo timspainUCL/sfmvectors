@@ -9,6 +9,7 @@
  */
 
 #include <ctgmath>
+#include <iostream>
 
 #include "dir2d.hpp"
 #include "pos2d.hpp"
@@ -36,7 +37,6 @@ dir2d pos2d::direction(pos2d& b) {
 dir2d pos2d::direction(pos2d &a, pos2d &b) {
 	double dx = b.x() - a.x();
 	double dy = b.y() - a.y();
-
 	if (fabs(dx) > x_wrap/2) {
 		dx -= copysign(x_wrap, dx);
 	}
@@ -47,7 +47,7 @@ dir2d pos2d::direction(pos2d &a, pos2d &b) {
 }
 
 pos2d pos2d::displace(dir2d &b) {
-	double nx = fmod(x() + b.x(), x_wrap);
-	double ny = fmod(y() + b.y(), y_wrap);
+	double nx = fmodulo(x() + b.x(), x_wrap);
+	double ny = fmodulo(y() + b.y(), y_wrap);
 	return pos2d(nx, ny);
 }

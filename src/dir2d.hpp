@@ -20,13 +20,19 @@ public:
 //	dir2d(vec2d&);
 
 	pos2d operator+(pos2d&); // move the given position in this direction
+	dir2d operator+(dir2d&); // vector addition
 	dir2d operator-(dir2d &b); // vector subtraction
 	double operator*(dir2d &b); // Scalar product between this and b
+	dir2d operator-(); // unary negation operator
 
 	pos2d displace(pos2d&); // Move a position in this direction
+	dir2d add(dir2d&); // vector addition
 	dir2d subtract(dir2d &b); // vector subtraction
 	double scalar_product(dir2d &b); // Scalar product between this and b
+	double length(); // length of this direction vector
 	double cos_angle(dir2d &b); // Cosine of the angle between this and b
+	void negate(); // negative vector, in place
+	dir2d negative(); // returns the negative vector, leaving the original
 };
 
 

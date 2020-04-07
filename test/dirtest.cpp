@@ -345,3 +345,29 @@ TEST_CASE("Test negation", "[Tests]") {
 	REQUIRE(xyn.x() == -x1);
 	REQUIRE(xyn.y() == -y1);
 }
+
+TEST_CASE("Test scalar multiplication base class", "[Tests]") {
+	double x1 = 2.;
+	double y1 = 3.;
+	double s = 2.;
+
+	vec2d xy1(x1, y1);
+	vec2d xys(s*x1, s*y1);
+	vec2d xyc = xy1 * s;
+
+	REQUIRE(closely_equal(xyc, xys));
+}
+
+TEST_CASE("Test scalar multiplication inheritance", "[Tests]") {
+	double x1 = 2.;
+	double y1 = 3.;
+	double s = 2.;
+
+	dir2d xy1(x1, y1);
+	dir2d xys(s*x1, s*y1);
+	dir2d xyc = xy1 * s;
+	dir2d xyd = s * xy1;
+
+	REQUIRE(closely_equal(xyc, xys));
+	REQUIRE(closely_equal(xyd, xys));
+}

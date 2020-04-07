@@ -25,6 +25,10 @@ double dir2d::operator*(dir2d &b) {
 	return x() * b.x() + y() * b.y();
 }
 
+dir2d dir2d::operator*(double s) {
+	return dir2d(x() * s, y() * s);
+}
+
 dir2d dir2d::operator-() {
 	return dir2d(-x(), -y());
 }
@@ -59,4 +63,8 @@ void dir2d::negate( ) {
 
 dir2d dir2d::negative( ) {
 	return dir2d(-x(), -y());
+}
+
+dir2d operator*(double s, dir2d v) {
+	return v * s;
 }

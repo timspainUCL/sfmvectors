@@ -23,6 +23,7 @@ public:
 	dir2d operator+(dir2d&); // vector addition
 	dir2d operator-(dir2d &b); // vector subtraction
 	double operator*(dir2d &b); // Scalar product between this and b
+	dir2d operator*(double); // Scaling vector * scalar
 	dir2d operator-(); // unary negation operator
 
 	pos2d displace(pos2d&); // Move a position in this direction
@@ -34,6 +35,8 @@ public:
 	void negate(); // negative vector, in place
 	dir2d negative(); // returns the negative vector, leaving the original
 };
+
+dir2d operator*(double, dir2d); // Scaling scalar * vector
 
 
 #endif /* SRC_DIR2D_HPP_ */
